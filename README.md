@@ -14,27 +14,41 @@ active.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repos
 coverage](https://codecov.io/gh/ropensci/canaper/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ropensci/canaper?branch=main)
 [![ropensci
 review](https://badges.ropensci.org/475_status.svg)](https://github.com/ropensci/software-review/issues/475)
-![runiverse](https://ropensci.r-universe.dev/badges/canaper)
+![runiverse](https://ropensci.r-universe.dev/badges/canaper) [![CRAN
+status](https://www.r-pkg.org/badges/version/canaper)](https://CRAN.R-project.org/package=canaper)
 <!-- badges: end -->
 
 The goal of `canaper` is to enable [categorical analysis of neo- and
 paleo-endemism (CANAPE)](https://doi.org/10.1038/ncomms5473) in **R**.
 
+- For
+  [tutorials](https://docs.ropensci.org/canaper/articles/canape.html),
+  see the `canaper` [website](https://docs.ropensci.org/canaper/).
+
 ## Installation
 
-`canaper` is not currently available on CRAN.
-
-You can install `canaper` from [r-universe](https://r-universe.dev)
-with:
+The stable version can be installed from
+[CRAN](https://CRAN.R-project.org/package=canaper):
 
 ``` r
-install.packages("canaper", repos = "https://ropensci.r-universe.dev")
+install.packages("canaper")
 ```
 
-or, you can install `canaper` from [GitHub](https://github.com/) with:
+The development version can be installed from
+[r-universe](http://ropensci.r-universe.dev/ui/#package:canaper) or
+[github](https://github.com/ropensci/canaper/):
 
 ``` r
-# install.packages("remotes")
+# r-universe
+options(repos = c(
+  ropensci = "https://ropensci.r-universe.dev/", 
+  CRAN = "https://cran.rstudio.com/"
+))
+install.packages("canaper", dep = TRUE)
+
+# OR
+
+# github (requires `remotes` or `devtools`)
 remotes::install_github("ropensci/canaper")
 ```
 
@@ -94,7 +108,9 @@ rand_test_results <- cpr_rand_test(
   phylocom$comm, phylocom$phy,
   null_model = "swap"
 )
-#> Warning in match_phylo_comm(phy = phy, comm = comm): Dropping tips from the tree because they are not present in the community data: 
+#> Warning: Abundance data detected. Results will be the same as if using
+#> presence/absence data (no abundance weighting is used).
+#> Warning: Dropping tips from the tree because they are not present in the community data: 
 #>  sp16, sp23, sp27, sp28, sp30, sp31, sp32
 ```
 
@@ -223,6 +239,13 @@ the right.
 
 ## Papers citing `canaper`
 
+- van Galen *et al.* 2023. “Correlated evolution in an ectomycorrhizal
+  host-symbiont system”. *New Phytologist*
+  <https://doi.org/10.1111/nph.18802>
+- Naranjo *et al.* 2023. “Ancestral area analyses reveal
+  Pleistocene-influenced evolution in a clade of coastal plain endemic
+  plants”. *Journal of Biogeography* 50, 393-405
+  <https://doi.org/10.1111/jbi.14541>
 - Ellepola *et al.* 2022. “The role of climate and islands in species
   diversification and reproductive-mode evolution of Old World tree
   frogs”. *Communications Biology* 5, 347
